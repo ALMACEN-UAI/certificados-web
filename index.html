@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Autentificación de Certificado</title>
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+body {
+  font-family: Arial, sans-serif;
+  font-size: 18px; /* Tamaño aumentado (16px + 2px) */
+  background: #f7f7f7;
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden;
+}
+
+    .top-bar {
+      width: 100%;
+      height: 80px;
+      background-color: #ccc;
+      position: fixed;
+      top: 0;
+      left: 0;
+      z-index: 2;
+    }
+
+    .background-pattern {
+      position: fixed;
+      width: 100%;
+      height: 100%;
+      z-index: 0;
+      display: grid;
+      grid-template-columns: repeat(auto-fill, 22px);
+      grid-auto-rows: 22px;
+      justify-content: center;
+      align-content: center;
+      gap: 4px;
+      pointer-events: none;
+    }
+
+    .square {
+      width: 18px;
+      height: 18px;
+      background-color: #ccc;
+      border-radius: 6px;
+      opacity: 0.4;
+    }
+
+    .form-container {
+      position: relative;
+      z-index: 1;
+      background: white;
+      padding: 30px;
+      border-radius: 10px;
+      width: 700px;
+      margin: 120px auto 60px auto;
+      box-shadow: 0 0 15px rgba(0,0,0,0.1);
+    }
+
+    h2 {
+      text-align: center;
+      color: #2b3373;
+      margin-bottom: 5px;
+    }
+
+    h3 {
+      text-align: center;
+      color: red;
+      margin-bottom: 30px;
+    }
+
+    .form-group {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 20px;
+    }
+
+    .form-field {
+      flex: 1 1 45%;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .form-field.full-width {
+      flex: 1 1 100%;
+    }
+
+    label {
+      font-weight: bold;
+      margin-bottom: 5px;
+    }
+
+    input {
+      padding: 10px;
+      border-radius: 5px;
+      border: 1px solid #ccc;
+      background-color: #eee;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Barra superior gris -->
+  <div class="top-bar"></div>
+
+  <!-- Fondo con cuadros equidistantes -->
+  <div class="background-pattern" id="pattern"></div>
+
+  <!-- Contenido principal -->
+  <div class="form-container">
+    <h2>AUTENTIFICACIÓN DE CERTIFICADO</h2>
+    <h3>VERIFICADO</h3>
+
+    <div class="form-group">
+      <div class="form-field">
+        <label for="dni">DNI</label>
+        <input type="text" id="dni" readonly value="12345678">
+      </div>
+
+      <div class="form-field">
+        <label for="codigo">CÓDIGO</label>
+        <input type="text" id="codigo" readonly value="DIP-340533">
+      </div>
+
+     
+
+      <div class="form-field full-width">
+        <label for="alumno_info"></label>
+        <input type="text" id="alumno_info" readonly value="Datos complementarios del alumno">
+      </div>
+
+      <div class="form-field">
+        <label for="horas">HORAS ACADÉMICAS</label>
+        <input type="text" id="horas" readonly value="120">
+      </div>
+
+      <div class="form-field">
+        <label for="fecha_inicio">FECHA DE INICIO</label>
+        <input type="text" id="fecha_inicio" readonly value="01/01/2024">
+      </div>
+
+      <div class="form-field">
+        <label for="fecha_fin">FECHA DE FINALIZACIÓN</label>
+        <input type="text" id="fecha_fin" readonly value="01/04/2024">
+      </div>
+
+      <div class="form-field full-width">
+        <label for="escuela">ESCUELA</label>
+        <input type="text" id="escuela" readonly value="Escuela Técnica de Lima">
+      </div>
+    </div>
+  </div>
+
+  <!-- Script para generar cuadros equidistantes -->
+  <script>
+    const container = document.getElementById("pattern");
+    const area = window.innerWidth * window.innerHeight;
+    const squareSize = 22 * 22; // cada celda tiene 22px incluyendo gap
+    const totalSquares = Math.floor(area / squareSize);
+
+    for (let i = 0; i < totalSquares; i++) {
+      const square = document.createElement("div");
+      square.classList.add("square");
+      container.appendChild(square);
+    }
+  </script>
+</body>
+</html>
